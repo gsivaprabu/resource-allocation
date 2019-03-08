@@ -31,30 +31,44 @@
 			<a href="logout.php" class="btn btn-primary"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
 		</div>
 		<div>
+			<?php
+	$sql="select * from server_details";
+	$result = $conn->query($sql);
+
+	
+	?>
+
+
 			<table class="table table-hover">
 				<thead>
 					<tr>
 						<th>S#</th>
 						<th>Server Name</th>
-						<th>Status</th>
+						<th>Server IP</th>
+						<th>Server Details</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>1</td>
-						<td>10.0.124.75</td>
-						<td>siva Using</td>
-					</tr>
-					<tr>
-						<td>2</td>
-						<td>10.0.125.6</td>
-						<td>Kalai using</td>
-					</tr>
-					<tr>
-						<td>3</td>
-						<td>10.123.56.9</td>
-						<td>Free</td>
-					</tr>
+					<?php
+
+
+				if ($result->num_rows > 0) {
+		while($row = $result->fetch_assoc()) {
+			            echo "<tr>";
+						echo	"<td>".$row["id"]."</td>";
+						echo	"<td>".$row["server_name"]."</td>";
+						echo	"<td>".$row["server_ip"]."</td>";
+						echo	"<td>".$row["server_details"]."</td>";
+					    echo "</tr>";
+		}
+	} else {
+		echo "0 results";
+	}
+	$conn->close();
+	
+
+					
+					?>
 				</tbody>
 			</table>
 		</div>
