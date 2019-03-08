@@ -1,2 +1,3 @@
-# resource-allocation
+# Resource Allocation
+
 Allocating Machines
