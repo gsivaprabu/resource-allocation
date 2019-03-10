@@ -26,7 +26,7 @@ var app = new Vue({
 						app.logDetails = {username: '', password:''};
 						setTimeout(function(){
 							window.location.href="success.php";
-						},10);
+						},1);
 						
 					}
 				});
