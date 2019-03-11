@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 10, 2019 at 03:25 AM
+-- Generation Time: Mar 11, 2019 at 04:31 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -57,10 +57,17 @@ CREATE TABLE `server_uasge_history` (
   `id` int(11) NOT NULL,
   `server_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `start_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `end_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `start_time` timestamp NULL DEFAULT NULL,
+  `end_time` timestamp NULL DEFAULT NULL,
   `comments` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `server_uasge_history`
+--
+
+INSERT INTO `server_uasge_history` (`id`, `server_id`, `user_id`, `start_time`, `end_time`, `comments`) VALUES
+(1, 1, 1, '2019-03-11 04:30:00', '2019-03-12 04:30:00', '');
 
 -- --------------------------------------------------------
 
@@ -107,7 +114,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `server_uasge_history`
 --
 ALTER TABLE `server_uasge_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user`
