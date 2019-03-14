@@ -1,3 +1,0 @@
-# Resource Allocation
-
-Allocating Machines

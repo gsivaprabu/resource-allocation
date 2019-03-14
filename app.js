@@ -1,35 +1,86 @@
 var app = new Vue({
-	el: '#login',
+	el: '#members',
 	data:{
-		successMessage: "",
+		showAddModal: false,
+		showEditModal: false,
+		showDeleteModal: false,
 		errorMessage: "",
-		logDetails: {username: '', password: ''},
+		successMessage: "",
+		server_details: [],
+		newMember: {firstname: '', lastname: ''},
+		newServer: {server_name: '', server_ip: '',server_details: ''},
+		clickMember: {}
+	},
+
+	mounted: function(){
+		this.getAllMembers();
 	},
 
 	methods:{
-		keymonitor: function(event) {
-       		if(event.key == "Enter"){
-         		app.checkLogin();
-        	}
-       	},
-
-		checkLogin: function(){
-			var logForm = app.toFormData(app.logDetails);
-			axios.post('login.php', logForm)
+		getAllMembers: function(){
+			axios.get('api.php')
 				.then(function(response){
-
+					console.log(response);
 					if(response.data.error){
 						app.errorMessage = response.data.message;
 					}
 					else{
-						app.successMessage = response.data.message;
-						app.logDetails = {username: '', password:''};
-						setTimeout(function(){
-							window.location.href="success.php";
-						},1);
-						
+						app.server_details = response.data.server_details;
 					}
 				});
+		},
+
+		saveMember: function(){
+			//console.log(app.newMember);
+			var memForm = app.toFormData(app.newMember);
+			axios.post('api.php?crud=create', memForm)
+				.then(function(response){
+					//console.log(response);
+					app.newMember = {firstname: '', lastname:''};
+					if(response.data.error){
+						app.errorMessage = response.data.message;
+					}
+					else{
+						app.successMessage = response.data.message
+						app.getAllMembers();
+					}
+				});
+		},
+
+		updateMember(){
+			var memForm = app.toFormData(app.clickMember);
+			axios.post('api.php?crud=update', memForm)
+				.then(function(response){
+					//console.log(response);
+					app.clickMember = {};
+					if(response.data.error){
+						app.errorMessage = response.data.message;
+					}
+					else{
+						app.successMessage = response.data.message
+						app.getAllMembers();
+					}
+				});
+		},
+
+		deleteMember(){
+			var memForm = app.toFormData(app.clickMember);
+			axios.post('api.php?crud=delete', memForm)
+				.then(function(response){
+					//console.log(response);
+					app.clickMember = {};
+					if(response.data.error){
+						app.errorMessage = response.data.message;
+					}
+					else{
+						app.successMessage = response.data.message
+						app.getAllMembers();
+					}
+				});
+		},
+
+		selectMember(member){
+			app.clickMember = member;
 		},
 
 		toFormData: function(obj){

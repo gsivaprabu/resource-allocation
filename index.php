@@ -1,56 +1,61 @@
-<?php
-	session_start();
-	if(isset($_SESSION['user'])){
-		header('location:success.php');
-	}
-?>
 <!DOCTYPE html>
 <html>
-
 <head>
-	<title>Resource Allocation</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<title>Vue.js CRUD Operation using PHP/MySQLi</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
-
 <body>
-	<div class="container">
-		<h1 class="page-header text-center">Resource Allocation</h1>
-		<div id="login">
-			<div class="col-md-4 col-md-offset-4">
-
-				<div class="panel panel-primary">
-					<div class="panel-heading"><span class="glyphicon glyphicon-lock"></span> Sign in</div>
-					<div class="panel-body">
-						<label>Username:</label>
-						<input type="text" class="form-control"  v-model="logDetails.username" v-on:keyup="keymonitor">
-						<label>Password:</label>
-						<input type="password" class="form-control"  v-model="logDetails.password"
-							v-on:keyup="keymonitor">
-					</div>
-					<div class="panel-footer">
-						<button class="btn btn-primary btn-block" @click="checkLogin();"><span
-								class="glyphicon glyphicon-log-in"></span> Login</button>
-					</div>
+<div class="container">
+	<h1 class="page-header text-center">RESOURCE ALLOCATION</h1>
+	<div id="members">
+		<div class="col-md-8 col-md-offset-2">
+			<div class="row">
+				<div class="col-md-12">
+					<h2>Server List
+					<button class="btn btn-primary pull-right" @click="showAddModal = true"><span class="glyphicon glyphicon-plus"></span> Add Server</button>
+					</h2>
 				</div>
-
-				<div class="alert alert-danger text-center" v-if="errorMessage">
-					<button type="button" class="close" @click="clearMessage();"><span
-							aria-hidden="true">&times;</span></button>
-					<span class="glyphicon glyphicon-alert"></span> {{ errorMessage }}
-				</div>
-
-				<div class="alert alert-success text-center" v-if="successMessage">
-					<button type="button" class="close" @click="clearMessage();"><span
-							aria-hidden="true">&times;</span></button>
-					<span class="glyphicon glyphicon-check"></span> {{ successMessage }}
-				</div>
-
 			</div>
-		</div>
-	</div>
-	<script src="vue.js"></script>
-	<script src="axios.js"></script>
-	<script src="app.js"></script>
-</body>
 
+			<div class="alert alert-danger text-center" v-if="errorMessage">
+				<button type="button" class="close" @click="clearMessage();"><span aria-hidden="true">&times;</span></button>
+				<span class="glyphicon glyphicon-alert"></span> {{ errorMessage }}
+			</div>
+			
+			<div class="alert alert-success text-center" v-if="successMessage">
+				<button type="button" class="close" @click="clearMessage();"><span aria-hidden="true">&times;</span></button>
+				<span class="glyphicon glyphicon-ok"></span> {{ successMessage }}
+			</div>
+
+			<table class="table table-bordered">
+				<thead>
+					<th>Id</th>
+					<th>Server Name</th>
+					<th>Server IP</th>
+					<th>Server Details</th>
+					<th>Action</th>
+				</thead>
+				<tbody>
+					<tr v-for="server in server_details">
+						<td align="center">{{ server.id }}</td>
+						<td align="center">{{ server.server_name }}</td>
+						<td align="center">{{ server.server_ip }}</td>
+						<td align="center">{{ server.server_details }}</td>
+						<td align="center">
+							<button class="btn btn-success" @click="showEditModal = true; selectMember(server_details);"><span class="glyphicon glyphicon-edit"></span> Edit</button> <button class="btn btn-danger" @click="showDeleteModal = true; selectMember(server_details);"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<?php include('modal.php'); ?>
+	</div>
+</div>
+<script src="vue.js"></script>
+<script src="axios.js"></script>
+<script src="app.js"></script>
+</body>
 </html>
