@@ -24,7 +24,7 @@
 			<div class="footerBtn pull-right">
 				<button class="btn btn-default" @click="showAddModal = false"><span
 						class="glyphicon glyphicon-remove"></span> Cancel</button> <button class="btn btn-primary"
-					@click="showAddModal = false; saveMember();"><span class="glyphicon glyphicon-floppy-disk"></span>
+					@click="showAddModal = false; saveServerDetails();"><span class="glyphicon glyphicon-floppy-disk"></span>
 					Save</button>
 			</div>
 		</div>

@@ -8,7 +8,7 @@ var app = new Vue({
 		successMessage: "",
 		server_details: [],
 		newMember: {firstname: '', lastname: ''},
-		newServer: {server_name: '', server_ip: '',server_details: ''},
+		newServer: {id: '',server_name: '', server_ip: '',server_details: ''},
 		clickMember: {}
 	},
 
@@ -30,13 +30,13 @@ var app = new Vue({
 				});
 		},
 
-		saveMember: function(){
+		saveServerDetails: function(){
 			//console.log(app.newMember);
-			var memForm = app.toFormData(app.newMember);
-			axios.post('api.php?crud=create', memForm)
+			var serverForm = app.toFormData(app.newServer);
+			axios.post('api.php?crud=create', serverForm)
 				.then(function(response){
 					//console.log(response);
-					app.newMember = {firstname: '', lastname:''};
+					app.newMember = {server_name: '', server_ip:'', server_details:''};
 					if(response.data.error){
 						app.errorMessage = response.data.message;
 					}
@@ -48,8 +48,8 @@ var app = new Vue({
 		},
 
 		updateMember(){
-			var memForm = app.toFormData(app.clickMember);
-			axios.post('api.php?crud=update', memForm)
+			var serverForm = app.toFormData(app.clickMember);
+			axios.post('api.php?crud=update', serverForm)
 				.then(function(response){
 					//console.log(response);
 					app.clickMember = {};
@@ -64,8 +64,8 @@ var app = new Vue({
 		},
 
 		deleteMember(){
-			var memForm = app.toFormData(app.clickMember);
-			axios.post('api.php?crud=delete', memForm)
+			var serverForm = app.toFormData(app.clickMember);
+			axios.post('api.php?crud=delete', serverForm)
 				.then(function(response){
 					//console.log(response);
 					app.clickMember = {};
@@ -81,6 +81,7 @@ var app = new Vue({
 
 		selectMember(member){
 			app.clickMember = member;
+			console.log('app.clickMember',  app.clickMember);
 		},
 
 		toFormData: function(obj){

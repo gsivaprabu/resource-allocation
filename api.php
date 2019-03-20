@@ -29,18 +29,19 @@ if($crud == 'read'){
 
 if($crud == 'create'){
 
-	$firstname = $_POST['firstname'];
-	$lastname = $_POST['lastname'];
+	$server_name=$_POST['server_name'];
+	$server_ip=$_POST['server_ip'];
+	$server_details=$_POST['server_details'];
 
-	$sql = "insert into members (firstname, lastname) values ('$firstname', '$lastname')";
+	$sql = "insert into server_details (server_name, server_ip, server_details) values ('$server_name', '$server_ip', '$server_details')";
 	$query = $conn->query($sql);
 
 	if($query){
-		$out['message'] = "Member Added Successfully";
+		$out['message'] = "Server Added Successfully";
 	}
 	else{
 		$out['error'] = true;
-		$out['message'] = "Could not add Member";
+		$out['message'] = "Could not add Server Details";
 	}
 	
 }
@@ -66,17 +67,17 @@ if($crud == 'update'){
 
 if($crud == 'delete'){
 
-	$memid = $_POST['memid'];
+	$serverId = $_POST['id'];
 
-	$sql = "delete from members where memid='$memid'";
+	$sql = "delete from server_details where id='$serverId'";
 	$query = $conn->query($sql);
 
 	if($query){
-		$out['message'] = "Member Deleted Successfully";
+		$out['message'] = "Server Deleted Successfully";
 	}
 	else{
 		$out['error'] = true;
-		$out['message'] = "Could not delete Member";
+		$out['message'] = "Could not delete Server";
 	}
 	
 }
