@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 14, 2019 at 04:01 PM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 5.6.35
+-- Generation Time: Mar 20, 2019 at 04:40 AM
+-- Server version: 10.1.26-MariaDB
+-- PHP Version: 7.1.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -40,7 +40,9 @@ CREATE TABLE `members` (
 
 INSERT INTO `members` (`memid`, `firstname`, `lastname`) VALUES
 (1, 'IBM', '10.0.125.68'),
-(2, 'DELL', '10.0.123.65.96');
+(2, 'DELL', '10.0.123.65.96'),
+(4, '', ''),
+(5, '', '');
 
 -- --------------------------------------------------------
 
@@ -65,7 +67,8 @@ INSERT INTO `server_details` (`id`, `server_name`, `server_ip`, `server_details`
 (3, 'LENOVA', '10.23.56.98', 'Lenova Server'),
 (4, 'SUPERMICRO', '10.25.69.76', 'Supermicro Server'),
 (5, 'Fujitsu', '10.36.56.98', 'Fujitsu Server'),
-(6, 'HP', '172.36.98.85', 'HP Server');
+(6, 'HP', '172.36.98.85', 'HP Server'),
+(7, 'ghjgg', 'kjuiiou', 'pp');
 
 -- --------------------------------------------------------
 
@@ -121,6 +124,12 @@ ALTER TABLE `members`
   ADD PRIMARY KEY (`memid`);
 
 --
+-- Indexes for table `server_details`
+--
+ALTER TABLE `server_details`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `server_uasge_history`
 --
 ALTER TABLE `server_uasge_history`
@@ -140,7 +149,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `members`
 --
 ALTER TABLE `members`
-  MODIFY `memid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `memid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `server_details`
+--
+ALTER TABLE `server_details`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `server_uasge_history`
