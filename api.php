@@ -70,6 +70,7 @@ if($crud == 'delete'){
 	$serverId = $_POST['id'];
 
 	$sql = "delete from server_details where id='$serverId'";
+	
 	$query = $conn->query($sql);
 
 	if($query){
