@@ -48,19 +48,20 @@ if($crud == 'create'){
 
 if($crud == 'update'){
 
-	$memid = $_POST['memid'];
-	$firstname = $_POST['firstname'];
-	$lastname = $_POST['lastname'];
+	$id = $_POST['id'];
+	$server_name = $_POST['server_name'];
+	$server_ip = $_POST['server_ip'];
+	$server_details = $_POST['server_details'];
 
-	$sql = "update members set firstname='$firstname', lastname='$lastname' where memid='$memid'";
+	$sql = "update server_details set server_name='$server_name', server_ip='$server_ip',server_details='$server_details' where id='$id'";
 	$query = $conn->query($sql);
 
 	if($query){
-		$out['message'] = "Member Updated Successfully";
+		$out['message'] = "Server Details Updated Successfully";
 	}
 	else{
 		$out['error'] = true;
-		$out['message'] = "Could not update Member";
+		$out['message'] = "Could not update Server Details";
 	}
 	
 }

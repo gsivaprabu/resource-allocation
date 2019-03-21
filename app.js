@@ -49,6 +49,7 @@ var app = new Vue({
 
 		updateMember(){
 			var serverForm = app.toFormData(app.clickMember);
+			console.log('serverForm', serverFormVal = serverForm);
 			axios.post('api.php?crud=update', serverForm)
 				.then(function(response){
 					//console.log(response);
@@ -64,15 +65,8 @@ var app = new Vue({
 		},
 
 		deleteMember(){
-
-			var serverForm={'id': parseInt(app.clickMember)};
-	
-				console.log('serverForm', serverFormVal = serverForm);
-
-			axios({
-				method: "post",
-				url: 'api.php?crud=delete',
-				data : serverForm})
+			var memForm = app.toFormData(app.clickMember);
+			axios.post('api.php?crud=delete', memForm)
 				.then(function(response){
 					//console.log(response);
 					app.clickMember = {};

@@ -43,9 +43,9 @@
 						<td align="center">{{ server.server_ip }}</td>
 						<td align="center">{{ server.server_details }}</td>
 						<td align="center">
-							<button class="btn btn-success" @click="showEditModal = true; selectMember(server_details);"><span class="glyphicon glyphicon-edit"></span> Edit</button> 
+							<button class="btn btn-success" @click="showEditModal = true; selectMember(server);"><span class="glyphicon glyphicon-edit"></span> Edit</button> 
 							
-							<button class="btn btn-danger" @click="showDeleteModal = true; selectMember(server.id);"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+							<button class="btn btn-danger" @click="showDeleteModal = true; selectMember(server);"><span class="glyphicon glyphicon-trash"></span> Delete</button>
 
 						</td>
 					</tr>

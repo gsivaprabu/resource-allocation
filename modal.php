@@ -2,7 +2,7 @@
 <div class="myModal" v-if="showAddModal">
 	<div class="modalContainer">
 		<div class="modalHeader">
-			<span class="headerTitle">Add New Member</span>
+			<span class="headerTitle">Add New Server</span>
 			<button class="closeBtn pull-right" @click="showAddModal = false">&times;</button>
 		</div>
 		<div class="modalBody">
@@ -40,12 +40,16 @@
 		</div>
 		<div class="modalBody">
 			<div class="form-group">
-				<label>Firstname:</label>
-				<input type="text" class="form-control" v-model="clickMember.firstname">
+				<label>Server Name:</label>
+				<input type="text" class="form-control" v-model="clickMember.server_name">
 			</div>
 			<div class="form-group">
-				<label>Lastname:</label>
-				<input type="text" class="form-control" v-model="clickMember.lastname">
+				<label>Server Ip:</label>
+				<input type="text" class="form-control" v-model="clickMember.server_ip">
+			</div>
+			<div class="form-group">
+				<label>Server Details:</label>
+				<input type="text" class="form-control" v-model="clickMember.server_details">
 			</div>
 		</div>
 		<hr>
@@ -69,7 +73,7 @@
 		</div>
 		<div class="modalBody">
 			<h5 class="text-center">Are you sure you want to Delete</h5>
-			<h2 class="text-center">{{clickMember.firstname}} {{clickMember.lastname}}</h2>
+			<h2 class="text-center">{{clickMember.server_name}}</h2>
 		</div>
 		<hr>
 		<div class="modalFooter">
