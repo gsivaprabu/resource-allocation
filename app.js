@@ -1,99 +1,91 @@
 var app = new Vue({
-	el: '#members',
-	data:{
+	el: '#servers',
+	data: {
 		showAddModal: false,
 		showEditModal: false,
 		showDeleteModal: false,
 		errorMessage: "",
 		successMessage: "",
 		server_details: [],
-		newMember: {firstname: '', lastname: ''},
-		newServer: {id: '',server_name: '', server_ip: '',server_details: ''},
-		clickMember: {}
+		newServer: { id: '', server_name: '', server_ip: '', server_details: '' },
+		clickServer: {}
 	},
 
-	mounted: function(){
-		this.getAllMembers();
+	mounted: function () {
+		this.getServers();
 	},
 
-	methods:{
-		getAllMembers: function(){
+	methods: {
+		getServers: function () {
 			axios.get('api.php')
-				.then(function(response){
-					console.log(response);
-					if(response.data.error){
+				.then(function (response) {
+					if (response.data.error) {
 						app.errorMessage = response.data.message;
 					}
-					else{
+					else {
 						app.server_details = response.data.server_details;
 					}
 				});
 		},
 
-		saveServerDetails: function(){
-			//console.log(app.newMember);
+		saveServerDetails: function () {
 			var serverForm = app.toFormData(app.newServer);
 			axios.post('api.php?crud=create', serverForm)
-				.then(function(response){
-					//console.log(response);
-					app.newMember = {server_name: '', server_ip:'', server_details:''};
-					if(response.data.error){
+				.then(function (response) {
+					app.newServer = { server_name: '', server_ip: '', server_details: '' };
+					if (response.data.error) {
 						app.errorMessage = response.data.message;
 					}
-					else{
+					else {
 						app.successMessage = response.data.message
-						app.getAllMembers();
+						app.getServers();
 					}
 				});
 		},
 
-		updateMember(){
-			var serverForm = app.toFormData(app.clickMember);
-			console.log('serverForm', serverFormVal = serverForm);
+		updateServer() {
+			var serverForm = app.toFormData(app.clickServer);
 			axios.post('api.php?crud=update', serverForm)
-				.then(function(response){
-					//console.log(response);
-					app.clickMember = {};
-					if(response.data.error){
+				.then(function (response) {
+					app.clickServer = {};
+					if (response.data.error) {
 						app.errorMessage = response.data.message;
 					}
-					else{
+					else {
 						app.successMessage = response.data.message
-						app.getAllMembers();
+						app.getServers();
 					}
 				});
 		},
 
-		deleteMember(){
-			var memForm = app.toFormData(app.clickMember);
+		deleteServer() {
+			var memForm = app.toFormData(app.clickServer);
 			axios.post('api.php?crud=delete', memForm)
-				.then(function(response){
-					//console.log(response);
-					app.clickMember = {};
-					if(response.data.error){
+				.then(function (response) {
+					app.clickServer = {};
+					if (response.data.error) {
 						app.errorMessage = response.data.message;
 					}
-					else{
+					else {
 						app.successMessage = response.data.message
-						app.getAllMembers();
+						app.getServers();
 					}
 				});
 		},
 
-		selectMember(member){
-			app.clickMember = member;
-			console.log('app.clickMember',  app.clickMember);
+		selectServer(server) {
+			app.clickServer = server;
 		},
 
-		toFormData: function(obj){
+		toFormData: function (obj) {
 			var form_data = new FormData();
-			for(var key in obj){
+			for (var key in obj) {
 				form_data.append(key, obj[key]);
 			}
 			return form_data;
 		},
 
-		clearMessage: function(){
+		clearMessage: function () {
 			app.errorMessage = '';
 			app.successMessage = '';
 		}

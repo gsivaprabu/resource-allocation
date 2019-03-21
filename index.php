@@ -8,7 +8,7 @@
 <body>
 <div class="container">
 	<h1 class="page-header text-center">RESOURCE ALLOCATION</h1>
-	<div id="members">
+	<div id="servers">
 		<div class="col-md-8 col-md-offset-2">
 			<div class="row">
 				<div class="col-md-12">
@@ -43,9 +43,9 @@
 						<td align="center">{{ server.server_ip }}</td>
 						<td align="center">{{ server.server_details }}</td>
 						<td align="center">
-							<button class="btn btn-success" @click="showEditModal = true; selectMember(server);"><span class="glyphicon glyphicon-edit"></span> Edit</button> 
+							<button class="btn btn-success" @click="showEditModal = true; selectServer(server);"><span class="glyphicon glyphicon-edit"></span> Edit</button> 
 							
-							<button class="btn btn-danger" @click="showDeleteModal = true; selectMember(server);"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+							<button class="btn btn-danger" @click="showDeleteModal = true; selectServer(server);"><span class="glyphicon glyphicon-trash"></span> Delete</button>
 
 						</td>
 					</tr>
