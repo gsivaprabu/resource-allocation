@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2019 at 04:40 AM
--- Server version: 10.1.26-MariaDB
--- PHP Version: 7.1.9
+-- Generation Time: May 17, 2019 at 08:38 AM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 5.6.35
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -68,7 +68,7 @@ INSERT INTO `server_details` (`id`, `server_name`, `server_ip`, `server_details`
 (4, 'SUPERMICRO', '10.25.69.76', 'Supermicro Server'),
 (5, 'Fujitsu', '10.36.56.98', 'Fujitsu Server'),
 (6, 'HP', '172.36.98.85', 'HP Server'),
-(7, 'ghjgg', 'kjuiiou', 'pp');
+(8, 'SIVA', '123.6.6.9', 'testing server');
 
 -- --------------------------------------------------------
 
@@ -155,7 +155,7 @@ ALTER TABLE `members`
 -- AUTO_INCREMENT for table `server_details`
 --
 ALTER TABLE `server_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `server_uasge_history`
