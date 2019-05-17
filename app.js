@@ -1,6 +1,10 @@
 var app = new Vue({
 	el: '#servers',
 	data: {
+		successMessage: "",
+		errorMessage: "",
+		logDetails: { username: '', password: '' },
+
 		showAddModal: false,
 		showEditModal: false,
 		showDeleteModal: false,
@@ -16,6 +20,45 @@ var app = new Vue({
 	},
 
 	methods: {
+
+		keymonitor: function (event) {
+			if (event.key == "Enter") {
+				app.checkLogin();
+			}
+		},
+		
+		checkLogin: function () {
+			var logForm = app.toFormData(app.logDetails);
+			axios.post('login.php', logForm)
+				.then(function (response) {
+
+					if (response.data.error) {
+						app.errorMessage = response.data.message;
+					}
+					else {
+						app.successMessage = response.data.message;
+						app.logDetails = { username: '', password: '' };
+						setTimeout(function () {
+							window.location.href = "success.php";
+						}, 1);
+
+					}
+				});
+		},
+
+		toFormData: function (obj) {
+			var form_data = new FormData();
+			for (var key in obj) {
+				form_data.append(key, obj[key]);
+			}
+			return form_data;
+		},
+
+		clearMessage: function () {
+			app.errorMessage = '';
+			app.successMessage = '';
+		},
+
 		getServers: function () {
 			axios.get('api.php')
 				.then(function (response) {
