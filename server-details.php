@@ -1,3 +1,15 @@
+<?php 	
+	session_start();
+	$conn = new mysqli("localhost", "root", "", "crud");
+ 
+	if ($conn->connect_error) {
+	    die("Connection failed: " . $conn->connect_error);
+	}
+
+	if (!isset($_SESSION['user']) ||(trim ($_SESSION['user']) == '')){
+		header('location:index.php');
+	} 
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +25,9 @@
 			<div class="row">
 				<div class="col-md-12">
 					<h2>Server List
+					<button style="margin-left: 10px;" class="btn btn-primary pull-right" @click="logout"><span class="glyphicon glyphicon-log-out"></span> Logout</button>
 					<button class="btn btn-primary pull-right" @click="showAddModal = true"><span class="glyphicon glyphicon-plus"></span> Add Server</button>
+							
 					</h2>
 				</div>
 			</div>

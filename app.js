@@ -21,6 +21,10 @@ var app = new Vue({
 
 	methods: {
 
+		logout:function(){
+			window.location.href = "logout.php";
+		},
+
 		keymonitor: function (event) {
 			if (event.key == "Enter") {
 				app.checkLogin();
@@ -39,7 +43,7 @@ var app = new Vue({
 						app.successMessage = response.data.message;
 						app.logDetails = { username: '', password: '' };
 						setTimeout(function () {
-							window.location.href = "success.php";
+							window.location.href = "server-details.php";
 						}, 1);
 
 					}
