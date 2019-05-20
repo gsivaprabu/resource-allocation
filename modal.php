@@ -18,6 +18,10 @@
 				<label>Server Details:</label>
 				<input type="text" class="form-control" v-model="newServer.server_details">
 			</div>
+			<div class="form-group">
+				<label>Server Details:</label>
+				<input type="text" class="form-control" v-model="newServer.full_name">
+			</div>
 		</div>
 		<hr>
 		<div class="modalFooter">
@@ -50,6 +54,10 @@
 			<div class="form-group">
 				<label>Server Details:</label>
 				<input type="text" class="form-control" v-model="clickServer.server_details">
+			</div>
+			<div class="form-group">
+				<label>Login By:</label>
+				<input type="text" class="form-control" v-model="clickServer.full_name">
 			</div>
 		</div>
 		<hr>

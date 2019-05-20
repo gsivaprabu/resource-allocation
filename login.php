@@ -27,6 +27,7 @@ else{
 	if($query->num_rows>0){
 		$row=$query->fetch_array();
 		$_SESSION['user']=$row['userid'];
+		$_SESSION['full_name']=$row['full_name'];
 		$out['message'] = "Login Successful";
 	}
 	else{

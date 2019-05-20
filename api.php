@@ -32,8 +32,9 @@ if($crud == 'create'){
 	$server_name=$_POST['server_name'];
 	$server_ip=$_POST['server_ip'];
 	$server_details=$_POST['server_details'];
+	$full_name=$_POST['full_name'];
 
-	$sql = "insert into server_details (server_name, server_ip, server_details) values ('$server_name', '$server_ip', '$server_details')";
+	$sql = "insert into server_details (server_name, server_ip, server_details) values ('$server_name', '$server_ip', '$server_details','$full_name')";
 	$query = $conn->query($sql);
 
 	if($query){
@@ -52,8 +53,9 @@ if($crud == 'update'){
 	$server_name = $_POST['server_name'];
 	$server_ip = $_POST['server_ip'];
 	$server_details = $_POST['server_details'];
+	$full_name = $_POST['full_name'];
 
-	$sql = "update server_details set server_name='$server_name', server_ip='$server_ip',server_details='$server_details' where id='$id'";
+	$sql = "update server_details set server_name='$server_name', server_ip='$server_ip',server_details='$server_details',full_name='$full_name' where id='$id'";
 	$query = $conn->query($sql);
 
 	if($query){

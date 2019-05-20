@@ -11,7 +11,7 @@ var app = new Vue({
 		errorMessage: "",
 		successMessage: "",
 		server_details: [],
-		newServer: { id: '', server_name: '', server_ip: '', server_details: '' },
+		newServer: { id: '', server_name: '', server_ip: '', server_details: '' ,full_name: ''},
 		clickServer: {}
 	},
 
@@ -79,7 +79,7 @@ var app = new Vue({
 			var serverForm = app.toFormData(app.newServer);
 			axios.post('api.php?crud=create', serverForm)
 				.then(function (response) {
-					app.newServer = { server_name: '', server_ip: '', server_details: '' };
+					app.newServer = { server_name: '', server_ip: '', server_details: '',full_name:'' };
 					if (response.data.error) {
 						app.errorMessage = response.data.message;
 					}

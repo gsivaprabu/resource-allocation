@@ -1,5 +1,6 @@
 <?php 	
 	session_start();
+	// echo $_SESSION['full_name'];
 	$conn = new mysqli("localhost", "root", "", "crud");
  
 	if ($conn->connect_error) {
@@ -47,7 +48,8 @@
 					<th>Id</th>
 					<th>Server Name</th>
 					<th>Server IP</th>
-					<th>Server Details</th>
+					<th>Server Usage Details</th>
+					<th>Last Updated</th>
 					<th>Action</th>
 				</thead>
 				<tbody>
@@ -56,6 +58,7 @@
 						<td align="center">{{ server.server_name }}</td>
 						<td align="center">{{ server.server_ip }}</td>
 						<td align="center">{{ server.server_details }}</td>
+						<td align="center"> by {{ server.full_name }}</td>
 						<td align="center">
 							<button class="btn btn-success" @click="showEditModal = true; selectServer(server);"><span class="glyphicon glyphicon-edit"></span> Edit</button> 
 							
