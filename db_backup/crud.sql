@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 17, 2019 at 04:15 PM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 5.6.35
+-- Generation Time: May 20, 2019 at 07:06 PM
+-- Server version: 10.1.26-MariaDB
+-- PHP Version: 7.1.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -54,21 +54,22 @@ CREATE TABLE `server_details` (
   `id` int(11) NOT NULL,
   `server_name` varchar(150) NOT NULL,
   `server_ip` varchar(150) NOT NULL,
-  `server_details` varchar(150) NOT NULL
+  `server_details` varchar(150) NOT NULL,
+  `full_name` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `server_details`
 --
 
-INSERT INTO `server_details` (`id`, `server_name`, `server_ip`, `server_details`) VALUES
-(1, 'IBM', '10.0.125.68', 'IBM Server'),
-(2, 'DELL', '10.0.126.98', 'DELL Server'),
-(3, 'LENOVA', '10.23.56.98', 'Lenova Server'),
-(4, 'SUPERMICRO', '10.25.69.76', 'Supermicro Server'),
-(5, 'Fujitsu', '10.36.56.98', 'Fujitsu Server'),
-(6, 'HP', '172.36.98.85', 'HP Server'),
-(8, 'SIVA', '123.6.6.9', 'testing server');
+INSERT INTO `server_details` (`id`, `server_name`, `server_ip`, `server_details`, `full_name`) VALUES
+(1, 'IBM', '10.0.125.68', 'IBM Server', 'Andy Chen'),
+(2, 'DELL', '10.0.126.98', 'DELL Server', 'Andy Chen'),
+(3, 'LENOVA', '10.23.56.98', 'Lenova Server', 'Andy Chen'),
+(4, 'SUPERMICRO', '10.25.69.76', 'Supermicro Server', 'Andy Chen'),
+(5, 'Fujitsu', '10.36.56.98', 'Fujitsu Server', 'Andy Chen'),
+(6, 'HP', '172.36.98.85', 'HP Server', 'Andy Chen'),
+(8, 'SIVA', '123.6.6.9', 'testing server', 'Siva');
 
 -- --------------------------------------------------------
 
