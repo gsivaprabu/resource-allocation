@@ -91,6 +91,7 @@ var app = new Vue({
 		},
 
 		updateServer() {
+			app.clickServer.full_name = document.getElementById('id_full_name').value;
 			var serverForm = app.toFormData(app.clickServer);
 			axios.post('api.php?crud=update', serverForm)
 				.then(function (response) {

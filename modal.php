@@ -39,7 +39,7 @@
 <div class="myModal" v-if="showEditModal">
 	<div class="modalContainer">
 		<div class="editHeader">
-			<span class="headerTitle">Edit Server</span>
+			<span class="headerTitle">Server block details</span>
 			<button class="closeEditBtn pull-right" @click="showEditModal = false">&times;</button>
 		</div>
 		<div class="modalBody">
@@ -49,7 +49,7 @@
 			</div>
 			<div class="form-group">
 				<label>Server Ip:</label>
-				<input type="text" class="form-control" v-model="clickServer.server_ip">
+				<input type="text" class="form-control" disabled v-model="clickServer.server_ip">
 			</div>
 			<div class="form-group">
 				<label>Server Details:</label>
@@ -57,7 +57,7 @@
 			</div>
 			<div class="form-group">
 				<label>Login By:</label>
-				<input type="text" class="form-control" v-model="clickServer.full_name">
+				<input type="text" class="form-control" id="id_full_name" value="<?php echo $_SESSION['full_name']; ?>">
 			</div>
 		</div>
 		<hr>
